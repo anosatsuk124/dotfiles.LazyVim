@@ -1,24 +1,33 @@
-vim.filetype.add({
-  extension = {
-    cs = "csharp",
-  },
-})
+local function configure_filetype()
+  -- C#
 
-vim.treesitter.language.register("c_sharp", "csharp")
+  vim.filetype.add({
+    extension = {
+      cs = "csharp",
+    },
+  })
 
-vim.filetype.add({
-  extension = {
-    gd = "gdscript",
-  },
-})
+  vim.treesitter.language.register("c_sharp", "csharp")
+
+  -- GDScript
+
+  vim.filetype.add({
+    extension = {
+      gd = "GDScript",
+    },
+  })
+end
 
 return {
   {
     "sheerun/vim-polyglot",
-    event = "VeryLazy",
+    lazy = false,
+    config = function(_, _)
+      configure_filetype()
+    end,
   },
   {
     "vim-scripts/bnf.vim",
-    event = "VeryLazy",
+    lazy = false,
   },
 }
