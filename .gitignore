@@ -6,3 +6,8 @@ debug
 foo.*
 *.log
 data
+
+lazy-lock.json
+lazyvim.json
+example.lua
+
