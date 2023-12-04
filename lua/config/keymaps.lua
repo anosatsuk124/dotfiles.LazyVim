@@ -6,7 +6,15 @@ local util = require("lazyvim.util")
 
 local map = util.safe_keymap_set
 
+-- Mapping jj-like keys to space
+
 map("i", "jj", "<esc>")
 map("i", "jf", "<esc>")
+
+-- Increment/decrement numbers
+
+map("n", "<C-+>", "<C-a>")
+map("n", "<C-=>", "<C-a>")
+map("n", "<C-->", "<C-a>")
 
 map("n", "<leader>v", ":lua Toggle_venn()<CR>", { desc = "Toggle diagram" })
