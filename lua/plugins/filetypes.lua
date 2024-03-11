@@ -19,13 +19,13 @@ local function configure_filetype()
 end
 
 return {
-  {
-    "sheerun/vim-polyglot",
-    lazy = false,
-    config = function(_, _)
-      configure_filetype()
-    end,
-  },
+  --  {
+  --    "sheerun/vim-polyglot",
+  --    lazy = false,
+  --    config = function(_, _)
+  --      configure_filetype()
+  --    end,
+  --  },
   {
     "vim-scripts/bnf.vim",
     lazy = false,

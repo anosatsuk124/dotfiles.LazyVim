@@ -8,13 +8,13 @@ local map = util.safe_keymap_set
 
 -- Mapping jj-like keys to space
 
-map("i", "jj", "<esc>")
+-- map("i", "jj", "<esc>")
 map("i", "jf", "<esc>")
 
--- Increment/decrement numbers
+-- TODO: Increment/decrement numbers
 
-map("n", "<C-+>", "<C-a>")
-map("n", "<C-=>", "<C-a>")
-map("n", "<C-->", "<C-a>")
+-- map("n", "<C-+>", "", { silent = true })
+-- map("n", "<C-+>", "<C-a>")
+-- map("n", "<C-_>", "<C-x>")
 
 map("n", "<leader>v", ":lua Toggle_venn()<CR>", { desc = "Toggle diagram" })
