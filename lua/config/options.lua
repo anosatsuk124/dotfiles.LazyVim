@@ -32,3 +32,4 @@ if vim.env.SSH_CONNECTION ~= nil then
     cache_enable = 0,
   }
 end
+opt.clipboard = "unnamedplus"
