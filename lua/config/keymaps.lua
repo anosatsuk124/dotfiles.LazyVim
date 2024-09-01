@@ -18,3 +18,6 @@ map("i", "jf", "<esc>")
 -- map("n", "<C-_>", "<C-x>")
 
 map("n", "<leader>v", ":lua Toggle_venn()<CR>", { desc = "Toggle diagram" })
+
+-- For SKK
+map("i", "<C-j>", "<Nop>")
