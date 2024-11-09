@@ -33,3 +33,5 @@ if vim.env.SSH_CONNECTION ~= nil then
   }
 end
 opt.clipboard = "unnamedplus"
+
+require("config.filetypes")
