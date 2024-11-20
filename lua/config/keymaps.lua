@@ -21,3 +21,5 @@ map("n", "<leader>v", ":lua Toggle_venn()<CR>", { desc = "Toggle diagram" })
 
 -- For SKK
 map("i", "<C-j>", "<Nop>")
+
+vim.g.maplocalleader = "["
