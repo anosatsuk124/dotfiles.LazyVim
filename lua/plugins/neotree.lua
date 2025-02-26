@@ -1,3 +1,7 @@
+if true then
+  return {}
+end
+
 local util = require("lazyvim.util")
 
 local function additional_config(opts)

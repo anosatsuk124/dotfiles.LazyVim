@@ -32,7 +32,7 @@ if vim.env.SSH_CONNECTION ~= nil then
     cache_enable = 0,
   }
 end
-opt.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamed,unnamedplus"
 
 -- vim.g.minipairs_disable = true
 
