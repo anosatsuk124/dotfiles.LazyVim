@@ -43,7 +43,7 @@ return {
             adapter = nil,
           },
           chat = {
-            adapter = "openrouter_gemini_2",
+            adapter = "openrouter_mistral31_small",
             slash_commands = {},
             tools = {
               ["mcp"] = {
@@ -60,6 +60,34 @@ return {
           },
         },
         adapters = {
+          openrouter_gemma_3 = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              env = {
+                url = "https://openrouter.ai/api",
+                api_key = "OPENROUTER_KEY",
+                chat_url = "/v1/chat/completions",
+              },
+              schema = {
+                model = {
+                  default = "google/gemma-3-27b-it",
+                },
+              },
+            })
+          end,
+          openrouter_mistral31_small = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              env = {
+                url = "https://openrouter.ai/api",
+                api_key = "OPENROUTER_KEY",
+                chat_url = "/v1/chat/completions",
+              },
+              schema = {
+                model = {
+                  default = "mistralai/mistral-small-3.1-24b-instruct",
+                },
+              },
+            })
+          end,
           openrouter_gemini_2 = function()
             return require("codecompanion.adapters").extend("openai_compatible", {
               env = {
@@ -84,6 +112,34 @@ return {
               schema = {
                 model = {
                   default = "deepseek/deepseek-r1-distill-llama-70b",
+                },
+              },
+            })
+          end,
+          openrouter_qwq_32b = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              env = {
+                url = "https://openrouter.ai/api",
+                api_key = "OPENROUTER_KEY",
+                chat_url = "/v1/chat/completions",
+              },
+              schema = {
+                model = {
+                  default = "qwen/qwq-32b",
+                },
+              },
+            })
+          end,
+          openrouter_gpt_4o_mini = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              env = {
+                url = "https://openrouter.ai/api",
+                api_key = "OPENROUTER_KEY",
+                chat_url = "/v1/chat/completions",
+              },
+              schema = {
+                model = {
+                  default = "openai/gpt-4o-mini-2024-07-18",
                 },
               },
             })
