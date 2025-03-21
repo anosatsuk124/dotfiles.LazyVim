@@ -15,7 +15,8 @@ vim.api.nvim_create_user_command("CodeCompanionSave", function(opts)
     return
   end
   if #opts.fargs == 0 then
-    vim.notify("CodeCompanionSave requires at least 1 arg to make a file name", vim.log.levels.ERROR)
+    local date = os.date("%Y-%m-%d-%H-%M-%S")
+    opts.fargs = { date }
   end
   local save_name = table.concat(opts.fargs, "-") .. ".md"
   local save_path = Path:new(save_folder, save_name)
