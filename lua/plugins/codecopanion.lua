@@ -43,7 +43,7 @@ return {
             adapter = nil,
           },
           chat = {
-            adapter = "openrouter_mistral31_small",
+            adapter = "openrouter_gemini_2",
             slash_commands = {},
             tools = {
               ["mcp"] = {
