@@ -13,7 +13,6 @@ M.make_system_prompt = function(args)
       local rule_prefix =
         "The following rules are specific to this project. In the event of any conflict with the default rules, please prioritize the rules outlined below. \n\n"
       local result = system_prompt .. "\n\n" .. rule_prefix .. "Rules:\n" .. rule
-      print(result)
       return result
     else
       return system_prompt
