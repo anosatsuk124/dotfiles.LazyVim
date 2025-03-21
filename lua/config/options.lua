@@ -35,5 +35,6 @@ end
 vim.opt.clipboard = "unnamed,unnamedplus"
 
 -- vim.g.minipairs_disable = true
+vim.g.lazyvim_picker = "snacks"
 
 require("config.filetypes")
