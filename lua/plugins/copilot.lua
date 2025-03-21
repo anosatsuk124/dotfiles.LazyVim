@@ -30,62 +30,67 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
-    config = {
-      opts = {
-        language = "Japanese",
-      },
-      strategies = {
-        inline = {
-          adapter = nil,
+    config = function()
+      require("user-utils.codecomponion-cmds")
+
+      local config = {
+        opts = {
+          language = "Japanese",
         },
-        chat = {
-          adapter = "openrouter_gemini_2",
-          slash_commands = {},
-          tools = {
-            ["mcp"] = {
-              -- calling it in a function would prevent mcphub from being loaded before it's needed
-              callback = function()
-                return require("mcphub.extensions.codecompanion")
-              end,
-              description = "Call tools and resources from the MCP Servers",
-              opts = {
-                requires_approval = true,
+        strategies = {
+          inline = {
+            adapter = nil,
+          },
+          chat = {
+            adapter = "openrouter_gemini_2",
+            slash_commands = {},
+            tools = {
+              ["mcp"] = {
+                -- calling it in a function would prevent mcphub from being loaded before it's needed
+                callback = function()
+                  return require("mcphub.extensions.codecompanion")
+                end,
+                description = "Call tools and resources from the MCP Servers",
+                opts = {
+                  requires_approval = true,
+                },
               },
             },
           },
         },
-      },
-      adapters = {
-        openrouter_gemini_2 = function()
-          return require("codecompanion.adapters").extend("openai_compatible", {
-            env = {
-              url = "https://openrouter.ai/api",
-              api_key = "OPENROUTER_KEY",
-              chat_url = "/v1/chat/completions",
-            },
-            schema = {
-              model = {
-                default = "google/gemini-2.0-flash-001",
+        adapters = {
+          openrouter_gemini_2 = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              env = {
+                url = "https://openrouter.ai/api",
+                api_key = "OPENROUTER_KEY",
+                chat_url = "/v1/chat/completions",
               },
-            },
-          })
-        end,
-        openrouter_deepseek_r1 = function()
-          return require("codecompanion.adapters").extend("openai_compatible", {
-            env = {
-              url = "https://openrouter.ai/api",
-              api_key = "OPENROUTER_KEY",
-              chat_url = "/v1/chat/completions",
-            },
-            schema = {
-              model = {
-                default = "deepseek/deepseek-r1-distill-llama-70b",
+              schema = {
+                model = {
+                  default = "google/gemini-2.0-flash-001",
+                },
               },
-            },
-          })
-        end,
-      },
-    },
+            })
+          end,
+          openrouter_deepseek_r1 = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              env = {
+                url = "https://openrouter.ai/api",
+                api_key = "OPENROUTER_KEY",
+                chat_url = "/v1/chat/completions",
+              },
+              schema = {
+                model = {
+                  default = "deepseek/deepseek-r1-distill-llama-70b",
+                },
+              },
+            })
+          end,
+        },
+      }
+      return require("codecompanion").setup(config)
+    end,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
