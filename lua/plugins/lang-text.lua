@@ -1,6 +1,4 @@
-local ltex = {}
-
-ltex.enabled_langs = {
+local enabled_langs = {
   -- Defaults:
   "bib",
   "gitcommit",
@@ -22,12 +20,14 @@ ltex.enabled_langs = {
   "lua",
 }
 
-function ltex.config(opts)
-  local new_opts = {
-    cmd = { "ltex-ls" },
-    -- capabilities = your_capabilities,
-    on_attach = function(client, bufnr)
-      -- rest of your on_attach process.
+return {
+  -- { import = "lazyvim.plugins.extras.lang.markdown" },
+  {
+    "barreiroleo/ltex_extra.nvim",
+    ft = enabled_langs,
+    dependencies = { "neovim/nvim-lspconfig" },
+    -- yes, you can use the opts field, just I'm showing the setup explicitly
+    config = function()
       require("ltex_extra").setup({
         -- table <string> : languages for witch dictionaries will be loaded, e.g. { "es-AR", "en-US" }
         -- https://valentjn.github.io/ltex/supported-languages.html#natural-languages
@@ -44,36 +44,26 @@ function ltex.config(opts)
         log_level = "info",
         -- table : configurations of the ltex language server.
         -- Only if you are calling the server from ltex_extra
-        server_opts = nil,
+        filetypes = enabled_langs,
+        server_opts = {
+          -- capabilities = your_capabilities,
+          on_attach = function(client, bufnr)
+            -- your on_attach process
+          end,
+          settings = {
+            ltex = {
+              enabled = enabled_langs,
+              language = "en-US",
+              completionEnabled = true,
+              additionalRules = {
+                motherTongue = "ja-JP",
+              },
+            },
+          },
+        },
       })
     end,
-    settings = {
-      ltex = {
-        enabled = ltex.enabled_langs,
-        language = "en-US",
-        completionEnabled = true,
-        additionalRules = {
-          motherTongue = "ja-JP",
-        },
-      },
-    },
-    filetypes = ltex.enabled_langs,
-  }
-
-  new_opts = vim.tbl_extend("force", opts, new_opts)
-
-  return new_opts
-end
-
-return {
-  -- { import = "lazyvim.plugins.extras.lang.markdown" },
-  {
-    "barreiroleo/ltex_extra.nvim",
-    -- ft = ltex.enabled_langs,
-    dependencies = { "neovim/nvim-lspconfig" },
-    -- yes, you can use the opts field, just I'm showing the setup explicitly
   },
-
   {
     "johmsalas/text-case.nvim",
     event = "VeryLazy",
