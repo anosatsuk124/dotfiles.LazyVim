@@ -1,11 +1,4 @@
 return {
-
-  {
-    "Davidyz/VectorCode",
-    version = "*", -- optional, depending on whether you're on nightly or release
-    build = "pipx upgrade vectorcode", -- optional but recommended if you set `version = "*"`
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
   {
     "ravitemer/mcphub.nvim",
     dependencies = {
@@ -47,12 +40,7 @@ return {
         },
         chat = {
           adapter = "openrouter_gemini_2",
-          slash_commands = {
-            -- add the vectorcode command here.
-            -- codebase = function()
-            --   require("vectorcode.integrations").codecompanion.chat.make_slash_command()
-            -- end,
-          },
+          slash_commands = {},
           tools = {
             ["mcp"] = {
               -- calling it in a function would prevent mcphub from being loaded before it's needed
@@ -63,12 +51,6 @@ return {
               opts = {
                 requires_approval = true,
               },
-            },
-            ["vectorcode"] = {
-              description = "Run VectorCode to retrieve the project context.",
-              callback = function()
-                return require("vectorcode.integrations").codecompanion.chat.make_tool()
-              end,
             },
           },
         },
@@ -88,13 +70,26 @@ return {
             },
           })
         end,
+        openrouter_deepseek_r1 = function()
+          return require("codecompanion.adapters").extend("openai_compatible", {
+            env = {
+              url = "https://openrouter.ai/api",
+              api_key = "OPENROUTER_KEY",
+              chat_url = "/v1/chat/completions",
+            },
+            schema = {
+              model = {
+                default = "deepseek/deepseek-r1-distill-llama-70b",
+              },
+            },
+          })
+        end,
       },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "ravitemer/mcphub.nvim",
-      "Davidyz/VectorCode",
     },
   },
 
