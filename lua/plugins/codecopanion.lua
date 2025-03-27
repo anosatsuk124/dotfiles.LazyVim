@@ -43,7 +43,7 @@ return {
             adapter = nil,
           },
           chat = {
-            adapter = "openrouter_gemini_2",
+            adapter = "openrouter_gemini_25_pro",
             slash_commands = {},
             tools = {
               ["mcp"] = {
@@ -98,6 +98,34 @@ return {
               schema = {
                 model = {
                   default = "google/gemini-2.0-flash-001",
+                },
+              },
+            })
+          end,
+          openrouter_gemini_25_pro = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              env = {
+                url = "https://openrouter.ai/api",
+                api_key = "OPENROUTER_KEY",
+                chat_url = "/v1/chat/completions",
+              },
+              schema = {
+                model = {
+                  default = "google/gemini-2.5-pro-exp-03-25:free",
+                },
+              },
+            })
+          end,
+          openrouter_deepseek_v3 = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              env = {
+                url = "https://openrouter.ai/api",
+                api_key = "OPENROUTER_KEY",
+                chat_url = "/v1/chat/completions",
+              },
+              schema = {
+                model = {
+                  default = "deepseek/deepseek-chat-v3-0324",
                 },
               },
             })
