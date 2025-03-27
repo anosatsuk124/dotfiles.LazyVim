@@ -43,7 +43,7 @@ return {
             adapter = nil,
           },
           chat = {
-            adapter = "openrouter_deepseek_v3",
+            adapter = "openrouter_gemini_25_pro",
             slash_commands = {},
             tools = {
               defaults = {},
@@ -103,20 +103,6 @@ return {
               },
             })
           end,
-          openrouter_gemini_2_pro = function()
-            return require("codecompanion.adapters").extend("openai_compatible", {
-              env = {
-                url = "https://openrouter.ai/api",
-                api_key = "OPENROUTER_KEY",
-                chat_url = "/v1/chat/completions",
-              },
-              schema = {
-                model = {
-                  default = "google/gemini-2.0-pro-exp-02-05:free",
-                },
-              },
-            })
-          end,
           openrouter_gemini_25_pro = function()
             return require("codecompanion.adapters").extend("openai_compatible", {
               env = {
@@ -154,7 +140,7 @@ return {
               },
               schema = {
                 model = {
-                  default = "deepseek/deepseek-r1",
+                  default = "deepseek/deepseek-r1-distill-llama-70b",
                 },
               },
             })
@@ -169,20 +155,6 @@ return {
               schema = {
                 model = {
                   default = "qwen/qwq-32b",
-                },
-              },
-            })
-          end,
-          openrouter_qwen_turbo = function()
-            return require("codecompanion.adapters").extend("openai_compatible", {
-              env = {
-                url = "https://openrouter.ai/api",
-                api_key = "OPENROUTER_KEY",
-                chat_url = "/v1/chat/completions",
-              },
-              schema = {
-                model = {
-                  default = "qwen/qwen-turbo",
                 },
               },
             })
