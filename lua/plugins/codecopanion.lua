@@ -46,6 +46,7 @@ return {
             adapter = "openrouter_gemini_25_pro",
             slash_commands = {},
             tools = {
+              defaults = {},
               ["mcp"] = {
                 -- calling it in a function would prevent mcphub from being loaded before it's needed
                 callback = function()

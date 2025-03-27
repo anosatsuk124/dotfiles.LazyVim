@@ -5,6 +5,9 @@ M.make_system_prompt = function(args)
 
   return function(_)
     -- Get the content of `.cursorrules` file in the project root
+    if vim.fn.filereadable(vim.fn.getcwd() .. "/.cursorrules") == 0 then
+      return system_prompt
+    end
     local cursor_rules = vim.fn.readfile(vim.fn.getcwd() .. "/.cursorrules")
     -- If the file exists, append the content to the system prompt
     -- Otherwise, return the default system prompt
