@@ -17,12 +17,6 @@ And then, you need to understand `./doc/index.md` and `./doc/` directory.
 - If you are asked about a commit creation, you need to think what should you do by yourself.
 
 - You can use `git` command, but you must follow rules below:
-  - You must get the comfirmation of the project owner before you run `git commit` or `git push`.
-    - The comfirmation should have the following information:
-      - What you did
-      - Why you did
-      - How you did
-      - What you want to do next
   - Commits must be split by the minimum unit.
     - Files
     - Commit messages
