@@ -27,5 +27,6 @@ return {
       table.insert(config.sources, { name = "conjure" })
       return cmp.setup(config)
     end,
+    dependencies = { "hrsh7th/nvim-cmp" },
   },
 }
