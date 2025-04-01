@@ -11,6 +11,7 @@ local opt = vim.opt
 opt.relativenumber = false
 opt.number = true
 opt.spell = false
+opt.spelllang = { "en", "cjk" }
 opt.wrap = true
 opt.undodir = { vim.fn.expand("$HOME/.cache/neovim/undo") }
 opt.undofile = true
