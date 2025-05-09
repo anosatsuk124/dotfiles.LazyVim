@@ -43,7 +43,7 @@ return {
             adapter = nil,
           },
           chat = {
-            adapter = "openrouter_deepseek_v3",
+            adapter = "openrouter_qwen3",
             slash_commands = {},
             tools = {
               defaults = {},
@@ -61,6 +61,20 @@ return {
           },
         },
         adapters = {
+          openrouter_qwen3 = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              env = {
+                url = "https://openrouter.ai/api",
+                api_key = "OPENROUTER_KEY",
+                chat_url = "/v1/chat/completions",
+              },
+              schema = {
+                model = {
+                  default = "qwen/qwen3-235b-a22b",
+                },
+              },
+            })
+          end,
           openrouter_gemma_3 = function()
             return require("codecompanion.adapters").extend("openai_compatible", {
               env = {
