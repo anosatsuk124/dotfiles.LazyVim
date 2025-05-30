@@ -38,4 +38,7 @@ vim.opt.clipboard = "unnamed,unnamedplus"
 -- vim.g.minipairs_disable = true
 vim.g.lazyvim_picker = "snacks"
 
+-- HACK: Disable lazyvim's check_order
+vim.g.lazyvim_check_order = false
+
 require("config.filetypes")
