@@ -10,10 +10,10 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
+    { import = "lazyvim.plugins.extras.vscode" },
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "plugins" },
     -- Enable vscode-neovim plugin
-    { import = "lazyvim.plugins.extras.vscode" },
     -- import any extras modules here
     -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- import/override with your plugins
