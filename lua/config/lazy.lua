@@ -10,8 +10,8 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { import = "lazyvim.plugins.extras.vscode" },
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    { import = "lazyvim.plugins.extras.vscode" },
     { import = "plugins" },
     -- Enable vscode-neovim plugin
     -- import any extras modules here
