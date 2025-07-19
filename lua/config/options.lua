@@ -19,20 +19,20 @@ opt.signcolumn = "auto"
 
 opt.exrc = true
 
-if vim.env.SSH_CONNECTION ~= nil then
-  vim.g.clipboard = {
-    name = "xsel-ssh",
-    copy = {
-      ["+"] = "xsel -i -b",
-      ["*"] = "xsel -i -b",
-    },
-    paste = {
-      ["+"] = "xsel -o -b",
-      ["*"] = "xsel -o -b",
-    },
-    cache_enable = 0,
-  }
-end
+-- if vim.env.SSH_CONNECTION ~= nil then
+--   vim.g.clipboard = {
+--     name = "xsel-ssh",
+--     copy = {
+--       ["+"] = "xsel -i -b",
+--       ["*"] = "xsel -i -b",
+--     },
+--     paste = {
+--       ["+"] = "xsel -o -b",
+--       ["*"] = "xsel -o -b",
+--     },
+--     cache_enable = 0,
+--   }
+-- end
 vim.opt.clipboard = "unnamed,unnamedplus"
 
 -- vim.g.minipairs_disable = true
